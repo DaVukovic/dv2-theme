@@ -122,7 +122,7 @@ prompt_cluster() {
 
 prompt_kubens() {
 	if [ ! -z $KUBECONFIG ]; then
-		prompt_segment red black "Ns: $(kubens -c)"
+		prompt_segment red white "Ns: $(kubens -c)"
 	fi
 }
 
@@ -237,7 +237,8 @@ prompt_hg() {
 
 # Dir: current working directory
 prompt_dir() {
-  prompt_segment blue $CURRENT_FG '%3~'
+  #prompt_segment blue $CURRENT_FG '%3~'
+  prompt_segment blue white '%3~'
 }
 
 # Virtualenv: current working virtualenv
