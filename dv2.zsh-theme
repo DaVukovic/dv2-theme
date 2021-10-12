@@ -115,16 +115,28 @@ fi
 }
 
 prompt_cluster() {
-	if [[ -n $cluster ]]; then
-		prompt_segment green black "Cl: $(echo "$cluster")"
+	kontext=$(kubectl config current-context)
+	if [[ -n $kontext ]]; then
+		prompt_segment green black "Cl: $(echo "$kontext")"
 	fi
 }
 
+#prompt_kubens() {
+#	if [ ! -z $KUBECONFIG ]; then
+#		prompt_segment red white "Ns: $(kubens -c)"
+#	fi
+#}
 prompt_kubens() {
-	if [ ! -z $KUBECONFIG ]; then
-		prompt_segment red white "Ns: $(kubens -c)"
+	prompt_segment red white "Ns: $(kubens -c)"
+}
+
+prompt_tf_wkspc() {
+	if [[ -d .terraform ]]; then
+		prompt_segment blue white "tf-ws: $(tf workspace show)"
 	fi
 }
+
+
 
 # Git: branch/detached head, dirty status
 prompt_git() {
@@ -295,6 +307,7 @@ build_prompt() {
   prompt_dir
 	prompt_cluster
 	prompt_kubens
+	prompt_tf_wkspc
   prompt_git
   prompt_bzr
   prompt_hg
