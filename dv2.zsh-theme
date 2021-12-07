@@ -117,7 +117,7 @@ fi
 prompt_cluster() {
 	kontext=$(kubectl config current-context)
 	if [[ -n $kontext ]]; then
-		prompt_segment green black "Cl: $(echo "$kontext")"
+		prompt_segment green black "Kx: $(echo "$kontext")"
 	fi
 }
 
@@ -127,7 +127,7 @@ prompt_cluster() {
 #	fi
 #}
 prompt_kubens() {
-	prompt_segment red white "Ns: $(kubens -c)"
+	prompt_segment red white "Kn: $(kubens -c)"
 }
 
 prompt_tf_wkspc() {
